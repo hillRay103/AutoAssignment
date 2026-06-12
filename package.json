@@ -1,0 +1,61 @@
+{
+  "name": "autoassignment",
+  "displayName": "AutoAssignment",
+  "description": "One-click assignment document generator for CS students",
+  "version": "0.9.0",
+  "publisher": "KhadijahNaveed",
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["Other"],
+  "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KhadijahNaveed/AutoAssignment"
+  },
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      { "command": "autoassignment.generate", "title": "Generate Assignment", "icon": "$(file-pdf)" }
+    ],
+    "menus": {
+      "editor/title": [{ "command": "autoassignment.generate", "group": "navigation" }]
+    },
+    "configuration": {
+      "title": "AutoAssignment",
+      "properties": {
+        "autoassignment.studentName":       { "type": "string",  "default": "" },
+        "autoassignment.regNumber":         { "type": "string",  "default": "" },
+        "autoassignment.courseName":        { "type": "string",  "default": "" },
+        "autoassignment.courseCode":        { "type": "string",  "default": "" },
+        "autoassignment.section":           { "type": "string",  "default": "" },
+        "autoassignment.submittedTo":       { "type": "string",  "default": "" },
+        "autoassignment.department":        { "type": "string",  "default": "" },
+        "autoassignment.university":        { "type": "string",  "default": "" },
+        "autoassignment.programName":       { "type": "string",  "default": "" },
+        "autoassignment.semester":          { "type": "string",  "default": "" },
+        "autoassignment.batch":             { "type": "string",  "default": "" },
+        "autoassignment.creditHours":       { "type": "string",  "default": "" },
+        "autoassignment.fontChoice":        { "type": "string",  "default": "Calibri", "enum": ["Calibri","Times New Roman"] },
+        "autoassignment.outputFormat":      { "type": "string",  "default": "docx", "enum": ["docx","pdf"] },
+        "autoassignment.savePath":          { "type": "string",  "default": "" },
+        "autoassignment.autoOpen":          { "type": "boolean", "default": true },
+        "autoassignment.assignmentCounter": { "type": "number",  "default": 1 },
+        "autoassignment.defaultTemplate":   { "type": "string",  "default": "B", "enum": ["A","B","C","D"] }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "dependencies": {
+    "docx": "^8.5.0",
+    "pdf-lib": "^1.17.1"
+  },
+  "devDependencies": {
+    "@types/node": "^18.19.130",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.3.0"
+  }
+}
